@@ -1,0 +1,14 @@
+{
+    "name": "abdelrhman-saeed/php-dto",
+    "autoload": {
+        "psr-4": {
+            "AbdelrhmanSaeed\\PHP\\Validator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "abdelrhman-saeed",
+            "email": "abdelrhmansaeed001@gmail.com"
+        }
+    ]
+}
