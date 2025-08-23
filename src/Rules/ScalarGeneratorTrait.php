@@ -2,9 +2,12 @@
 
 namespace AbdelrhmanSaeed\PHP\Validator\Rules;
 
+use AbdelrhmanSaeed\PHP\Validator\Validator;
 
 /**
- * @property mixed $currentInput
+ * @property Validator $Validator
+ * @property mixed $value
+ * @property string $field
  */
 trait ScalarGeneratorTrait
 {
@@ -14,7 +17,7 @@ trait ScalarGeneratorTrait
    */
   public function string(): StringRules
   {
-    return new StringRules($this->currentInput);
+    return new StringRules($this->validator, $this->field, $this->value);
   }
 
   /**
@@ -23,7 +26,7 @@ trait ScalarGeneratorTrait
    */
   public function int(): IntRules
   {
-    return new IntRules($this->currentInput);
+    return new IntRules($this->validator, $this->field, $this->value);
   }
 
   /**
@@ -32,7 +35,7 @@ trait ScalarGeneratorTrait
    */
   public function float(): FloatRules
   {
-    return new FloatRules($this->currentInput);
+    return new FloatRules($this->validator, $this->field, $this->value);
   }
 
   /**
@@ -41,7 +44,7 @@ trait ScalarGeneratorTrait
    */
   public function array(): ArrayRules
   {
-    return new ArrayRules($this->currentInput);
+    return new ArrayRules($this->validator, $this->field, $this->value);
   }
 
   /**
@@ -50,6 +53,6 @@ trait ScalarGeneratorTrait
    */
   public function boolean(): BooleanRules
   {
-    return new BooleanRules($this->currentInput);
+    return new BooleanRules($this->validator, $this->field, $this->value);
   }
 }
