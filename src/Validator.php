@@ -1,55 +1,90 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Validator;
+namespace AbdelrhmanSaeed\PHP\Sanity;
 
-use AbdelrhmanSaeed\PHP\Validator\Rules\GenericRules;
+use AbdelrhmanSaeed\PHP\Sanity\{
+  Rules\RuleFactory, ValidatedDataBuilder, FieldExtractor
+};
 
 
 abstract class Validator
 {
-  protected mixed $currentInput;
-  protected array $errors = [];
-
+  protected array $validated  = [];
+  protected array $errors     = [];
 
   public function __construct(protected array $data)
   {
-    $this->rules();
+    $this->validate($this->rules(), fn(string $field, mixed $value) =>
+        ValidatedDataBuilder::build($field, $value, $this->validated, $this->errors));
+
+    $this->validate($this->files());
   }
 
-  public function addError(string $name, string $error): void
+  public function validate(array $rules, ?callable $action = null): void
   {
-    $this->errors[$name][] = $error;
+    foreach ($rules as $path => &$userDefinedRules)
+    {
+      $fields = [];
+
+      RuleFactory::checkUserDefinedRules($userDefinedRules);
+      FieldExtractor::extract(explode('.', $path), $this->data, $fields);
+
+      foreach ($fields as $field => $value)
+      {
+        RuleFactory::make($this, $field, $value, $userDefinedRules, $this->data)
+          ->handle();
+
+        is_null($action) ?: $action($field, $value);
+      }
+    }
   }
+
 
   /**
    * defines the request validation rules
    *
-   * @return void
+   * @return <string, string[]>
    */
-  abstract protected function rules(): void;
+  protected function rules(): array { return []; }
 
   /**
-   * specifies the request field to validate on
+   * defines the request validation file rules
    *
-   * @return GenericRules
+   * @return <string, string[]>
    */
-  protected function input(string $name): GenericRules
-  {
-    return new GenericRules($this, $name, $this->data[$name] ?? null);
-  }
+  protected function files(): array { return []; }
 
   /**
    * returns the validated data
    *
-   * @return <string,T>
+   * @return <string, mixed>
    */
-  public function getData(): array
+  public function validated(): array
   {
-    return $this->data;
+    return $this->validated;
   }
 
-  public function getErrors(): array
+  /**
+   *
+   * returns the error messages of the data
+   * that didn't pass the validation
+   *
+   * @return <string, T>
+   */
+  public function errors(): array
   {
     return $this->errors;
+  }
+
+  /**
+    param string $field
+    param string $error
+    
+   * @return void
+   */
+  public function addError(string $field, string $error): void
+  {
+    $this->errors[$field] ??= [];
+    $this->errors[$field][] = $error;
   }
 }

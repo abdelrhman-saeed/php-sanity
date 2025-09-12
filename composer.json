@@ -1,8 +1,9 @@
 {
-    "name": "abdelrhman-saeed/php-dto",
+    "name": "abdelrhman-saeed/php-sanity",
     "autoload": {
         "psr-4": {
-            "AbdelrhmanSaeed\\PHP\\Validator\\": "src/"
+            "AbdelrhmanSaeed\\PHP\\Sanity\\": "src/",
+            "AbdelrhmanSaeed\\PHP\\Sanity\\Test\\": "test/"
         }
     },
     "authors": [
@@ -10,5 +11,12 @@
             "name": "abdelrhman-saeed",
             "email": "abdelrhmansaeed001@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^12.3",
+        "mockery/mockery": "^1.6"
+    },
+    "require": {
+        "abdelrhman-saeed/php-http": "^2.1"
+    }
 }
