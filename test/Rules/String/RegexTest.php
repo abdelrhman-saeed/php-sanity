@@ -1,10 +1,10 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\String;
+namespace NightCommit\PHP\Sanity\Test\Rules\String;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\String\Regex;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\String\Regex;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class RegexTest extends BaseRuleTestCase

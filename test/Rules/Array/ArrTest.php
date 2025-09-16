@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Array;
+namespace NightCommit\PHP\Sanity\Test\Rules\Array;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Array\Arr;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\Array\Arr;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class ArrTest extends BaseRuleTestCase

@@ -1,9 +1,8 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\Numeric;
+namespace NightCommit\PHP\Sanity\Rules\Numeric;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Rule;
 
 
 class Unsigned extends Rule

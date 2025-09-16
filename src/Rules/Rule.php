@@ -1,8 +1,8 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules;
+namespace NightCommit\PHP\Sanity\Rules;
 
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Validator;
 
 abstract class Rule
 {

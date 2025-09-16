@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Int;
+namespace NightCommit\PHP\Sanity\Test\Rules\Int;
 
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Int\Integer;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\Int\Integer;
 
 
 class IntegerTest extends BaseRuleTestCase

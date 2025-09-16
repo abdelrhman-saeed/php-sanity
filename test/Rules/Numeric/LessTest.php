@@ -1,10 +1,11 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Numeric;
+namespace NightCommit\PHP\Sanity\Test\Rules\Numeric;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Numeric\Less;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Numeric\Less;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+
 
 class LessTest extends BaseRuleTestCase
 {

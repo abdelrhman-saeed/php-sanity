@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Rules\Float;
+namespace NightCommit\PHP\Sanity\Test\Rules\Rules\Float;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Float\Floats;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\Float\Floats;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class FloatsTest extends BaseRuleTestCase

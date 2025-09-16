@@ -1,10 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\Array;
+namespace NightCommit\PHP\Sanity\Rules\Array;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Rules\Rule;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
 
 
 class ArrLength extends Rule

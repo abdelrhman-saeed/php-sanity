@@ -1,10 +1,10 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Rules\Generic;
+namespace NightCommit\PHP\Sanity\Test\Rules\Rules\Generic;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\Confirmed;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Generic\Confirmed;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class ConfirmedTest extends BaseRuleTestCase

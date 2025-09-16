@@ -1,11 +1,11 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Rules\Float;
+namespace NightCommit\PHP\Sanity\Test\Rules\Rules\Float;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Float\Floats;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Float\Percision;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Float\Floats;
+use NightCommit\PHP\Sanity\Rules\Float\Percision;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class PercisionTest extends BaseRuleTestCase

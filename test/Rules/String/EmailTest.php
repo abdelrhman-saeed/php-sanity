@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\String;
+namespace NightCommit\PHP\Sanity\Test\Rules\String;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\String\Email;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\String\Email;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class EmailTest extends BaseRuleTestCase

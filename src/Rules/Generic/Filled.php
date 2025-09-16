@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\Generic;
+namespace NightCommit\PHP\Sanity\Rules\Generic;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Rule;
+use NightCommit\PHP\Sanity\Rules\WrongDefinedRuleException;
 
 
 class Filled extends Rule

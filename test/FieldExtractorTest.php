@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test;
+namespace NightCommit\PHP\Sanity\Test;
 
 use PHPUnit\Framework\TestCase;
-use AbdelrhmanSaeed\PHP\Sanity\FieldExtractor;
+use NightCommit\PHP\Sanity\FieldExtractor;
 
 
 class FieldExtractorTest extends TestCase

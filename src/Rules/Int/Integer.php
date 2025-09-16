@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\Int;
+namespace NightCommit\PHP\Sanity\Rules\Int;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Rule;
+use NightCommit\PHP\Sanity\Rules\WrongDefinedRuleException;
 
 
 class Integer extends Rule

@@ -1,10 +1,10 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Generic;
+namespace NightCommit\PHP\Sanity\Test\Rules\Generic;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\In;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Generic\In;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class InTest extends BaseRuleTestCase

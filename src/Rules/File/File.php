@@ -1,10 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\File;
+namespace NightCommit\PHP\Sanity\Rules\File;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Rules\Rule;
+
 
 class File extends Rule
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Array;
+namespace NightCommit\PHP\Sanity\Test\Rules\Array;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Array\ArrLength;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Array\ArrLength;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+
 
 class ArrLengthTest extends BaseRuleTestCase
 {

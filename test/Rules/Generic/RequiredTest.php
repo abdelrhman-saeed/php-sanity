@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Generic;
+namespace NightCommit\PHP\Sanity\Test\Rules\Generic;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\Required;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\Generic\Required;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 class RequiredTest extends BaseRuleTestCase
 {

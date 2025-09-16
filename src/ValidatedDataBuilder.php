@@ -1,6 +1,6 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity;
+namespace NightCommit\PHP\Sanity;
 
 
 class ValidatedDataBuilder

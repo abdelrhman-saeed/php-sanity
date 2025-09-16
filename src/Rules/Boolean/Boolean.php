@@ -1,9 +1,8 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\Boolean;
+namespace NightCommit\PHP\Sanity\Rules\Boolean;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Rule;
 
 
 class Boolean extends Rule

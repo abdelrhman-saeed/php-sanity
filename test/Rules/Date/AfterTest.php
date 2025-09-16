@@ -1,10 +1,10 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Date;
+namespace NightCommit\PHP\Sanity\Test\Rules\Date;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Date\After;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Date\After;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class AfterTest extends BaseRuleTestCase

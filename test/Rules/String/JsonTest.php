@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\String;
+namespace NightCommit\PHP\Sanity\Test\Rules\String;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\String\Json;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\String\Json;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class JsonTest extends BaseRuleTestCase

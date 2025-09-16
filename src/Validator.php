@@ -1,8 +1,8 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity;
+namespace NightCommit\PHP\Sanity;
 
-use AbdelrhmanSaeed\PHP\Sanity\{
+use NightCommit\PHP\Sanity\{
   Rules\RuleFactory, ValidatedDataBuilder, FieldExtractor
 };
 

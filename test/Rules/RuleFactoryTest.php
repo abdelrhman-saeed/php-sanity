@@ -1,11 +1,11 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules;
+namespace NightCommit\PHP\Sanity\Test\Rules;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\RuleFactory;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Rule;
+use NightCommit\PHP\Sanity\Rules\RuleFactory;
+use NightCommit\PHP\Sanity\Validator;
 use PHPUnit\Framework\TestCase;
 
 class RuleFactoryTest extends TestCase

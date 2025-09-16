@@ -1,11 +1,11 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\File;
+namespace NightCommit\PHP\Sanity\Test\Rules\File;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\File\FSize;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\File\FSize;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Validator;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class FSizeTest extends BaseRuleTestCase

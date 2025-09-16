@@ -1,6 +1,6 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Exceptions;
+namespace NightCommit\PHP\Sanity\Exceptions;
 
 
 class WrongDefinedRuleException extends \Exception {}

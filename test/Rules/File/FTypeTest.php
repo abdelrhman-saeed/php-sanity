@@ -1,10 +1,10 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\File;
+namespace NightCommit\PHP\Sanity\Test\Rules\File;
 
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\File\FType;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\File\FType;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class FTypeTest extends BaseRuleTestCase

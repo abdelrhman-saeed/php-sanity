@@ -1,8 +1,8 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules;
+namespace NightCommit\PHP\Sanity\Test\Rules;
 
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Validator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

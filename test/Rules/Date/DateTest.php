@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Date;
+namespace NightCommit\PHP\Sanity\Test\Rules\Date;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Date\Date;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\Date\Date;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class DateTest extends BaseRuleTestCase

@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\d\PHP\Sanity\Test\Rules\Generic;
+namespace NightCommit\PHP\d\PHP\Sanity\Test\Rules\Generic;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\Filled;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\Generic\Filled;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class FilledTest extends BaseRuleTestCase

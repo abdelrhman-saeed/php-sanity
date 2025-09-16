@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Boolean;
+namespace NightCommit\PHP\Sanity\Test\Rules\Boolean;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Boolean\Boolean;
-use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
+use NightCommit\PHP\Sanity\Rules\Boolean\Boolean;
+use NightCommit\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
 class BooleanTest extends BaseRuleTestCase

@@ -1,9 +1,8 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\String;
+namespace NightCommit\PHP\Sanity\Rules\String;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
+use NightCommit\PHP\Sanity\Rules\Rule;
 
 
 class Email extends Rule

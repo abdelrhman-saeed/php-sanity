@@ -1,9 +1,9 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Test;
+namespace NightCommit\PHP\Sanity\Test;
 
 use PHPUnit\Framework\TestCase;
-use AbdelrhmanSaeed\PHP\Sanity\ValidatedDataBuilder;
+use NightCommit\PHP\Sanity\ValidatedDataBuilder;
 
 
 class ValidatedDataBuilderTest extends TestCase

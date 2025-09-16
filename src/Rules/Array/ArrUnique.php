@@ -1,8 +1,8 @@
 <?php
 
-namespace AbdelrhmanSaeed\PHP\Sanity\Rules\Array;
+namespace NightCommit\PHP\Sanity\Rules\Array;
 
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
+use NightCommit\PHP\Sanity\Rules\Rule;
 
 
 class ArrUnique extends Rule
