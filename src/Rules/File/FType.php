@@ -11,7 +11,7 @@ class FType extends Rule
   /**
    * @property string
    */
-  public static string $name = 'file_type';
+  public static string $name = 'ftype';
 
   /**
    * @property string

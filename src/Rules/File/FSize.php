@@ -11,7 +11,7 @@ class FSize extends Rule
   /**
    * @property string
    */
-  public static string $name = 'file_size';
+  public static string $name = 'fsize';
 
   /**
   *

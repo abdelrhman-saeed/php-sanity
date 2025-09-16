@@ -10,7 +10,7 @@ class Date extends Rule
   /**
    * @property string
    */
-  public static string $name = 'date_';
+  public static string $name = 'date';
 
   /**
    * @property string

@@ -53,6 +53,7 @@ use AbdelrhmanSaeed\PHP\Sanity\Rules\{
   File\FSize,
   File\FType,
 };
+use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\Nullable;
 
 class RuleFactory
 {
@@ -61,6 +62,9 @@ class RuleFactory
     #Generics
     'required'          => Required::class,
     'filled'            => Filled::class,
+    'confirmed'         => Confirmed::class,
+    'in'                => In::class,
+    'nullable'          => Nullable::class,
 
     #String
     'string'            => Str::class,
@@ -69,8 +73,6 @@ class RuleFactory
     'max'               => Max::class,
     'email'             => Email::class,
     'regex'             => Regex::class,
-    'confirmed'         => Confirmed::class,
-    'in'                => In::class,
 
     #Int
     'int'               => Integer::class,

@@ -12,7 +12,7 @@ class ArrLength extends Rule
   /**
    * @property string
    */
-  public static string $name = 'len';
+  public static string $name = 'array_length';
 
   /**
    * @property null|string

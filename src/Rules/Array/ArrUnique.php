@@ -10,7 +10,7 @@ class ArrUnique extends Rule
   /**
    * @property string
    */
-  public static string $name = 'arr_unique';
+  public static string $name = 'array_unique';
 
   /**
    * @property null|string
