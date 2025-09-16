@@ -25,7 +25,7 @@ class ArrUnique extends Rule
   public function handle(): void
   {
     count($this->value) === count(array_unique($this->value))
-      ?: $this->validator->addError($this->field, self::$errorMessage);
+      ?: $this->addError();
 
     parent::handle();
   }

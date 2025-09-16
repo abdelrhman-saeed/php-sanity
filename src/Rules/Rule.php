@@ -9,7 +9,7 @@ abstract class Rule
   /**
    * @property string
    */
-  public static string $name = 'abstract_rule';
+  public static string $name;
 
   /**
    * defines error message for the sub Rule::class objects
@@ -44,23 +44,30 @@ abstract class Rule
    *
    * @return Rule
    */
-  public function setNext(Rule $next): Rule
-  {
-    return $this->next = $next;
-  }
+  public function setNext(Rule $next): Rule { return $this->next = $next; }
 
   /**
    * gives the field value to the next handler
    *
    * @return void
    */
-  public function handle(): void
+  public function handle(): void { $this->next?->handle(); }
+
+  /**
+  * @return string
+  */
+  public function getErrorMessage(): string
   {
-    $this->next?->handle();
+    return $this->validator::$messages[static::$name] ?? static::$errorMessage;
   }
 
-  public static function getErrorMessage(): string
+  protected function addError(mixed ...$swaps): self
   {
-    return static::$errorMessage;
+    $errorMessage = $this->getErrorMessage(); 
+    empty($swaps) ?: $errorMessage = sprintf($errorMessage, ...$swaps);
+
+    $this->validator->addError($this->field, $errorMessage);
+
+    return $this;
   }
 }

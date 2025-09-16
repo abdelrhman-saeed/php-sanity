@@ -36,12 +36,8 @@ class FType extends Rule
       pathinfo( basename($this->value['name']), PATHINFO_EXTENSION )
     );
 
-    if (! in_array($fileType, $this->args))
-    {
-      $this->validator->addError($this->field,
-        sprintf(self::$errorMessage, implode(',', $this->args))
-      );
-    }
+    if (! in_array($fileType, $this->args)) $this->addError(implode(',', $this->args));
+
     parent::handle();
   }
 }

@@ -27,7 +27,7 @@ class Str extends Rule
   {
     if (! is_string($this->value)) {
 
-      $this->validator->addError($this->field, self::$errorMessage);
+      $this->addError();
       return;
     }
 

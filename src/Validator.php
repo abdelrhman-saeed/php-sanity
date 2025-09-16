@@ -9,8 +9,10 @@ use AbdelrhmanSaeed\PHP\Sanity\{
 
 abstract class Validator
 {
-  protected array $validated  = [];
-  protected array $errors     = [];
+  protected array $validated    = [];
+  protected array $errors       = [];
+  public static array $messages = [];
+
 
   public function __construct(protected array $data)
   {
@@ -27,14 +29,14 @@ abstract class Validator
       $fields = [];
 
       RuleFactory::checkUserDefinedRules($userDefinedRules);
-      FieldExtractor::extract(explode('.', $path), $this->data, $fields);
+      FieldExtractor::extract(explode('.', $path), $this->all(), $fields);
 
       foreach ($fields as $field => $value)
       {
         RuleFactory::make($this, $field, $value, $userDefinedRules, $this->data)
           ->handle();
 
-        is_null($action) ?: $action($field, $value);
+        if (! is_null($action)) $action($field, $value);
       }
     }
   }
@@ -59,13 +61,16 @@ abstract class Validator
    *
    * @return <string, mixed>
    */
-  public function validated(): array
-  {
-    return $this->validated;
-  }
+  public function validated(): array { return $this->validated; }
 
   /**
+   * returns all data
    *
+   * @return <string, mixed>
+   */
+  public function all(): array { return $this->data; }
+
+  /**
    * returns the error messages of the data
    * that didn't pass the validation
    *

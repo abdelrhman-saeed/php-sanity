@@ -26,7 +26,8 @@ class Filled extends Rule
   public function handle(): void
   {
     if (empty($this->value)) {
-      $this->validator->addError($this->field, self::$errorMessage);
+
+      $this->addError();
       return;
     }
 

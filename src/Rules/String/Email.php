@@ -25,8 +25,7 @@ class Email extends Rule
    */
   public function handle(): void
   {
-    if (! filter_var($this->value, FILTER_VALIDATE_EMAIL))
-      $this->validator->addError($this->field, self::$errorMessage);
+    if (! filter_var($this->value, FILTER_VALIDATE_EMAIL)) $this->addError();
 
     parent::handle();
   }

@@ -29,9 +29,8 @@ class ArrLength extends Rule
     if (isset($this->args[0]) && ! is_numeric($this->args[0]))
       throw new WrongDefinedRuleException('length rule takes exactly one integer parameter');
 
-
-    $this->args[0] == count($this->value)
-      ?: $this->validator->addError($this->field, sprintf(self::$errorMessage, $this->args[0]));
+    if ((int) $this->args[0] !== count($this->value))
+      $this->addError($this->args[0]);
 
     parent::handle();
   }

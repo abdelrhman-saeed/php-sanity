@@ -4,7 +4,7 @@ namespace AbdelrhmanSaeed\PHP\Sanity\Rules\Generic;
 
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
 use AbdelrhmanSaeed\PHP\Sanity\Rules\WrongDefinedRuleException;
-
+use stdClass;
 
 class Required extends Rule
 {
@@ -19,15 +19,15 @@ class Required extends Rule
   protected static string $errorMessage = 'required';
 
   /**
-   * gives the field value to the next handler
+  * gives the field value to the next handler
    *
    * @return void
    */
   public function handle(): void
   {
-    if (empty($this->value)) {
-
-      $this->validator->addError($this->field, self::$errorMessage);
+    if (is_null($this->value))
+    {
+      $this->addError();
       return;
     }
 

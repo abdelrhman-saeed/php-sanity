@@ -39,18 +39,14 @@ class Regex extends Rule
     if (! isset($this->args[0]))
     {
       throw new WrongDefinedRuleException(
-        sprintf(
-          "the '%s' rule takes exactly one parameter as a regex format!",
-          self::$name
-        ));
+        sprintf("the '%s' rule takes exactly one parameter as a regex format!", self::$name)
+      );
     }
 
     ! isset($this->regex[$this->args[0]])
       ?: $this->args[0] = $this->regex[$this->args[0]];
 
-    if (! preg_match($this->args[0], $this->value)) {
-      $this->validator->addError($this->field, self::$errorMessage);
-    }
+    if (! preg_match($this->args[0], $this->value)) $this->addError();
 
     parent::handle();
   }

@@ -16,7 +16,7 @@ class Boolean extends Rule
   /**
    * @property nul|string
    */
-  protected static string $errorMessage = 'should be boolean';
+  protected static string $errorMessage = "should be boolean, if it's casted then: 'yes' or 'no'";
 
   /**
    * gives the field value to the next handler
@@ -27,11 +27,10 @@ class Boolean extends Rule
   {
     $shouldCast = isset($this->args[0]) && $this->args[0] === 'cast';
 
-    if ($shouldCast && !in_array($this->value, ['yes', 'no'], true)) {
-      $this->validator->addError($this->field, "should be 'yes' or 'no'.");
-    }
-    elseif (! is_bool($this->value)) {
-      $this->validator->addError($this->field, self::$errorMessage);
+    if ($shouldCast && !in_array($this->value, ['yes', 'no'], true)
+        || ! $shouldCast && !is_bool($this->value))
+    {
+      $this->addError();
     }
 
     parent::handle();

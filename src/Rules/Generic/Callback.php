@@ -9,14 +9,13 @@ use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
 
 class Callback extends Rule
 {
-  public function __construct(
+  private $callable;
 
-    private   $callable,
-    protected Validator $validator,
-    protected string    $field,
-    protected mixed     $value,
-    protected array     &$data
-  ) {}
+  public function setCallable(callable $callble): self
+  {
+    $this->callable = $callble;
+    return $this;
+  }
 
   /**
    * gives the field value to the next handler
@@ -38,9 +37,6 @@ class Callback extends Rule
 
     $errorMessage = $errorMessage->getDefaultValue();
 
-    ($result = ($this->callable)($errorMessage, $this->value))
-      ?: $this->validator->addError($this->field, $errorMessage);
-
     // continue validation if this callback validation passed
     $continueValidation = true;
 
@@ -50,6 +46,9 @@ class Callback extends Rule
         (bool) $callbackParamters[1]->getDefaultValue();
     }
 
-    if ($result && $continueValidation) parent::handle();
+    ($this->callable)($errorMessage, $continueValidation, $this->value)
+      ?: $this->validator->addError($this->field, $errorMessage);
+
+    if ($continueValidation) parent::handle();
   }
 }

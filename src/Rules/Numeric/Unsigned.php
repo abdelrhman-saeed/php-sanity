@@ -25,7 +25,7 @@ class Unsigned extends Rule
    */
   public function handle(): void
   {
-    if ($this->value < 0) $this->validator->addError($this->field, self::$errorMessage);
+    if ($this->value < 0) $this->addError();
 
     parent::handle();
   }

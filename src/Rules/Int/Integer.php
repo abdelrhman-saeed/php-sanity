@@ -25,8 +25,7 @@ class Integer extends Rule
    */
   public function handle(): void
   {
-    if (! is_numeric($this->value))
-      $this->validator->addError($this->field, self::$errorMessage);
+    if (! is_numeric($this->value)) $this->addError();
 
     parent::handle();
   }

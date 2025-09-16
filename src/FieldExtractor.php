@@ -7,34 +7,24 @@ class FieldExtractor
 {
   public static function extract(array $pathSegments, mixed &$data, array &$fields, string $prefix = ''): void
   {
-    if (empty($pathSegments)) {
+    if (empty($pathSegments))
+    {
       $fields[$prefix] = $data;
       return;
     }
 
-    if (! is_array($data)) return;
+    if (( $segment = array_shift($pathSegments) ) === '*' && !empty($data)) 
+    {
+      foreach ($data as $i => $item)
+        self::extract($pathSegments, $item, $fields, ltrim("$prefix.$i", '.'));
 
-    $segment = array_shift($pathSegments);
-    $newPrefix = ltrim("$prefix.$segment", '.');
-
-    if (array_key_exists($segment, $data)) {
-      self::extract($pathSegments, $data[$segment], $fields, $newPrefix);
       return;
     }
 
-    if (empty($data)) self::extract($pathSegments, $data, $fields, $newPrefix);
+    isset($data[$segment])
+      ? $data = &$data[$segment]
+      : $data = null;
 
-    foreach ($data as $i => $item)
-    {
-      $newPrefix  = ltrim("$prefix.$i", '.');
-
-      if ($segment !== '*') {
-        $item       = null;
-        $newPrefix  = ltrim("$prefix.$segment", '.');
-      }
-
-      self::extract($pathSegments, $item, $fields, $newPrefix);
-
-    }
+    self::extract($pathSegments, $data, $fields, ltrim("$prefix.$segment", '.'));
   }
 }

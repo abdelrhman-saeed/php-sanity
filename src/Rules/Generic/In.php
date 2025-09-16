@@ -26,10 +26,9 @@ class In extends Rule
   public function handle(): void
   {
     if (! isset($this->args[0]))
-      throw new WrongDefinedRuleException("the'" . self::$name . "'Rule take at least one paramter");
+      throw new WrongDefinedRuleException(sprintf("the '%s' Rule take at least one paramter", self::$name));
 
-    in_array($this->value, $this->args)
-      ?: $this->validator->addError($this->field, self::$errorMessage);
+    if (! in_array($this->value, $this->args)) $this->addError();
 
     parent::handle();
   }

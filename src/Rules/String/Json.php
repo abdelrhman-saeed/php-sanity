@@ -25,8 +25,7 @@ class Json extends Rule
    */
   public function handle(): void
   {
-    json_validate($this->value) ?:
-      $this->validator->addError($this->field, self::$errorMessage);
+    if (! json_validate($this->value)) $this->addError();
 
     parent::handle();
   }

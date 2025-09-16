@@ -32,8 +32,7 @@ class Before extends Rule
     $date = (new DateTime($this->value));
     $dateToCompareWith = (new DateTime($this->data[$this->args[0]]));
 
-    $date < $dateToCompareWith ?:
-      $this->validator->addError($this->field, sprintf(self::$errorMessage, $this->args[0]));
+    if ($date >= $dateToCompareWith) $this->addError($this->args[0]);
 
     parent::handle();
   }

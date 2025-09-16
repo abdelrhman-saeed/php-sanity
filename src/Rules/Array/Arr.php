@@ -24,8 +24,7 @@ class Arr extends Rule
    */
   public function handle(): void
   {
-    is_array($this->value)
-      ?: $this->validator->addError($this->field, self::$errorMessage);
+    if (! is_array($this->value)) $this->addError();
 
     parent::handle();
   }

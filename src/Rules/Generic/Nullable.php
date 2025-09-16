@@ -21,6 +21,7 @@ class Nullable extends Rule
   public function handle(): void
   {
     if (is_null($this->value)) return;
+
     parent::handle();
   }
 }

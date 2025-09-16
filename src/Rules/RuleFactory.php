@@ -10,6 +10,7 @@ use AbdelrhmanSaeed\PHP\Sanity\Rules\{
 
   #Generics
   Generic\Filled,
+  Generic\Callback,
   Generic\Required,
   Generic\Confirmed,
   Generic\In,
@@ -19,6 +20,7 @@ use AbdelrhmanSaeed\PHP\Sanity\Rules\{
 
   #Float
   Float\Floats,
+  Float\Percision,
 
   #Boolean
   Boolean\Boolean,
@@ -37,7 +39,6 @@ use AbdelrhmanSaeed\PHP\Sanity\Rules\{
   Array\ArrUnique,
 
   #Numeric
-  Numeric\Equal,
   Numeric\Less,
   Numeric\More,
   Numeric\Unsigned,
@@ -52,7 +53,6 @@ use AbdelrhmanSaeed\PHP\Sanity\Rules\{
   File\FSize,
   File\FType,
 };
-
 
 class RuleFactory
 {
@@ -77,9 +77,9 @@ class RuleFactory
 
     #Float
     'float'             => Floats::class,
+    'percision'         => Percision::class,
 
     #Numeric
-    'equal'             => Equal::class,
     'less'              => Less::class,
     'more'              => More::class,
     'unsigned'          => Unsigned::class,
@@ -89,7 +89,7 @@ class RuleFactory
 
     #Array
     'array'             => Arr::class,
-    'len'               => ArrLength::class,
+    'array_length'      => ArrLength::class,
     'array_unique'      => ArrUnique::class,
 
     #DateTime
@@ -99,13 +99,13 @@ class RuleFactory
 
     #FileUpload
     'file'              => File::class,
-    'file_type'         => FType::class,
-    'file_size'         => FSize::class,
+    'ftype'             => FType::class,
+    'fsize'             => FSize::class,
   ];
 
-  public static function register(string $name, string $class): void
+  public static function register(string $name, string|callable $action): void
   {
-    SELF::$ruleMap[$name] = $class;
+    self::$ruleMap[$name] = $action;
   }
 
   public static function getRule(string $name): ?string
@@ -113,16 +113,30 @@ class RuleFactory
     return self::$ruleMap[$name] ?? null;
   }
 
+  private static function setupUserDefinedRuleForInstantiating(string &$rule): void
+  {
+    $rule = explode(':', $rule);
+    $rule = [
+      'name' => $rule[0],
+      'args' => isset($rule[1]) ? explode(',', $rule[1]) : [],
+    ];
+  }
+
   public static function checkUserDefinedRules(array &$rules): void
   {
-    foreach ($rules as &$rule) {
+    foreach ($rules as &$rule)
+    {
+      self::setupUserDefinedRuleForInstantiating($rule);
 
-      $rule = explode(':', $rule);
-      $rule = ['name' => $rule[0], 'args' => explode(',', $rule[1] ?? '')];
-
-      if (! array_key_exists($rule['name'], SELF::$ruleMap))
+      if (! array_key_exists($rule['name'], self::$ruleMap))
         throw new WrongDefinedRuleException("the defined rule '{$rule['name']}' is unsupported!");
     }
+  }
+
+  private static function instantiateRule(string|callable $ruleAction, mixed ...$args): Rule
+  {
+    return is_callable($ruleAction)
+      ? (new Callback(...$args))->setCallable($ruleAction) : new $ruleAction(...$args);
   }
 
   public static function make(Validator $validator, string $field, mixed &$value, array $rules, array &$data): Rule
@@ -130,16 +144,16 @@ class RuleFactory
     if (empty($rules))
       throw new \LogicException("No rules defined for field '{$field}'");
 
-    $rule       = array_shift($rules);
-    $ruleClass  = SELF::$ruleMap[$rule['name']];
+    $rule = array_shift($rules);
+    $ruleAction = self::$ruleMap[$rule['name']];
 
     /** @var Rule */
-    $head = $current = new $ruleClass($validator, $field, $value, $data, $rule['args']);
+    $head = $current = self::instantiateRule($ruleAction, $validator, $field, $value, $data, $rule['args']);
 
-    foreach ($rules as $rule) {
-
-      $ruleClass  = SELF::$ruleMap[$rule['name']];
-      $current    = $current->setNext(new $ruleClass($validator, $field, $value, $data, $rule['args']));
+    foreach ($rules as $rule)
+    {
+      $current = $current
+        ->setNext(self::instantiateRule(self::$ruleMap[$rule['name']], $validator, $field, $value, $data, $rule['args']));
     }
 
     return $head;

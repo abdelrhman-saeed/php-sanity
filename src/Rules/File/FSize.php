@@ -55,19 +55,11 @@ class FSize extends Rule
 
     $fileSize = $this->value['size'] / $this->sizes[$this->args[2]];
 
-    if ($fileSize < $this->args[0])
-    {
-      $this->validator->addError( $this->field,
-        sprintf(self::$errorMessage, 'less', $this->args[0], $this->args[2])
-      );
-    }
+    if ($fileSize < (int) $this->args[0])
+      $this->addError('less', $this->args[0], $this->args[2]);
 
     if ((int) $this->args[1] !== 0 && $fileSize > (int) $this->args[1])
-    {
-      $this->validator->addError($this->field,
-        sprintf(self::$errorMessage, 'more', $this->args[1], $this->args[2])
-      );
-    }
+      $this->addError('more', $this->args[1], $this->args[2]);
 
     parent::handle();
   }

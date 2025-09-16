@@ -25,9 +25,9 @@ class File extends Rule
    */
   public function handle(): void
   {
-    if (! is_uploaded_file($this->value['tmp_name']))
-    {
-      $this->validator->addError($this->field, self::$errorMessage);
+    if (! is_uploaded_file($this->value['tmp_name'])) {
+
+      $this->addError();
       return;
     }
 

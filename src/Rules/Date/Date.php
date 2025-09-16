@@ -27,8 +27,8 @@ class Date extends Rule
     $dateFormat = $this->args[0] ?? 'Y-m-d';
     $date = \DateTime::createFromFormat($dateFormat, $this->value);
 
-    $date && $date->format($dateFormat) === $this->value ?:
-      $this->validator->addError($this->field, sprintf(self::$errorMessage, $dateFormat));
+    if (($date && $date->format($dateFormat)) !== $this->value)
+      $this->addError($dateFormat);
 
     parent::handle();
   }

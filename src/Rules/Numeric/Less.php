@@ -32,12 +32,7 @@ class Less extends Rule
       );
     }
 
-    if ($this->value >= $this->args[0])
-    {
-      $this
-        ->validator
-        ->addError($this->field, sprintf(self::$errorMessage, $this->args[0]));
-    }
+    if ($this->value >= $this->args[0]) $this->addError($this->args[0]);
 
     parent::handle();
   }
