@@ -4,22 +4,19 @@ namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\File;
 
 use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
 use AbdelrhmanSaeed\PHP\Sanity\Rules\File\FSize;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 use AbdelrhmanSaeed\PHP\Sanity\Validator;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 
-class FSizeTest extends TestCase
+class FSizeTest extends BaseRuleTestCase
 {
 
-  private MockObject|Validator $validatorMock;
   private array $uploadedFile;
-  private string $field = 'file';
 
   protected function setUp(): void
   {
-    $this->validatorMock  = $this->createMock(Validator::class);
+    parent::setUp();
     $this->uploadedFile   = ['name' => 'image.jpg', 'size' => 51200]; // 50 KB
-    $this->field = 'file';
   }
 
   public function testHandleWithNoArgs(): void
@@ -49,19 +46,19 @@ class FSizeTest extends TestCase
 
   public function testHandleWithFileSizeLessThanMinimum(): void
   {
-    $this
-      ->validatorMock
-      ->expects($this->once())
-      ->method('addError')
-      ->with($this->field, "size should not be less than 100 KB");
-
-    (new FSize(
+    $rule = new FSize(
       $this->validatorMock,
       $this->field,
       $this->uploadedFile,
       [$this->uploadedFile],
-      [100, 0, 'KB'])
-    )->handle();
+      [100, 0, 'KB']
+    );
+
+    $this->expectsAddErrorToBeCalled(
+      [$this->field, sprintf($rule->getErrorMessage(), 'less', 100, 'KB')]
+    );
+
+    $rule->handle();
   }
 
   public function testHandleWithFileSizeMoreThanMaximum(): void
@@ -69,18 +66,18 @@ class FSizeTest extends TestCase
 
     $this->uploadedFile['size'] = 204800;
 
-    $this
-      ->validatorMock
-      ->expects($this->once())
-      ->method('addError')
-      ->with($this->field, "size should not be more than 100 KB");
-
-    (new FSize(
+    $rule = new FSize(
       $this->validatorMock,
       $this->field,
       $this->uploadedFile,
       [$this->uploadedFile],
-      [0, 100, 'KB'])
-    )->handle();
+      [0, 100, 'KB']
+    );
+
+    $this->expectsAddErrorToBeCalled(
+      [$this->field, sprintf($rule->getErrorMessage(), 'more', 100, 'KB')]
+    );
+
+    $rule->handle();
   }
 }

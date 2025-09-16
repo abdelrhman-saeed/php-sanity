@@ -37,7 +37,8 @@ class FieldExtractorTest extends TestCase
     $fields   = [];
     $expected = [
       'data.users.0.name' => 'abdelrhman',
-      'data.users.1.name' => 'ahmed'];
+      'data.users.1.name' => 'ahmed'
+    ];
 
     FieldExtractor::extract($this->pathSegments, $this->data, $fields);
 
@@ -47,7 +48,7 @@ class FieldExtractorTest extends TestCase
   public function testExtractWithMissingData(): void
   {
     $data     = $fields = [];
-    $expected = [implode('.', $this->pathSegments) => []];
+    $expected = [implode('.', $this->pathSegments) => null];
 
     FieldExtractor::extract($this->pathSegments, $data, $fields);
 

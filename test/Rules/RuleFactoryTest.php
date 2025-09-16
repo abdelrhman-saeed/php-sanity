@@ -24,7 +24,7 @@ class RuleFactoryTest extends TestCase
     $rules    = ['string', 'min:10', 'max:20', 'in:1,2,3'];
     $expected = [
 
-      ['name' => 'string',  'args' => ['']],
+      ['name' => 'string',  'args' => []],
       ['name' => 'min',     'args' => ['10']],
       ['name' => 'max',     'args' => ['20']],
       ['name' => 'in',      'args' => ['1', '2', '3']],

@@ -3,45 +3,31 @@
 namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Boolean;
 
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Boolean\Boolean;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
-class BooleanTest extends TestCase
+class BooleanTest extends BaseRuleTestCase
 {
-
-  private MockObject|Validator $mockValidator;
-  private string $field = 'check';
-
-
-  protected function setUp(): void
-  {
-
-    $this->mockValidator = $this->createMock(Validator::class);
-  }
 
   public function testHandleWhenCastIsSet(): void
   {
-    $this
-        ->mockValidator
-        ->expects($this->once())
-        ->method('addError')
-        ->with($this->field, "should be 'yes' or 'no'.");
+    $rule = new Boolean(
+      $this->validatorMock,
+      $this->field,
+      $this->value = true,
+      $this->data,
+      $this->args = ['cast']
+    );
 
-    (new Boolean($this->mockValidator, $this->field, true, [], ['cast']))
-      ->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, $rule->getErrorMessage()]);
+    $rule->handle();
   }
 
   public function testHandleWhenCastIsNotSet(): void
   {
-    $this
-        ->mockValidator
-        ->expects($this->once())
-        ->method('addError')
-        ->with($this->field, "should be boolean");
+    $rule = new Boolean($this->validatorMock, $this->field, $this->value = "yes", $this->data);
 
-    (new Boolean($this->mockValidator, $this->field, "yes", []))
-      ->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, $rule->getErrorMessage()]);
+    $rule->handle();
   }
 }

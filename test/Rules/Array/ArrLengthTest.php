@@ -3,33 +3,37 @@
 namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Array;
 
 use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
-use PHPUnit\Framework\TestCase;
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Array\ArrLength;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 use AbdelrhmanSaeed\PHP\Sanity\Validator;
 
-class ArrLengthTest extends TestCase
+class ArrLengthTest extends BaseRuleTestCase
 {
 
-  public function testHandle(): void
+  public function testHandleIfRuleParamterIsNotSet(): void
   {
-    $mockValidator  = $this->createMock(Validator::class);
-    $errorMessage   = 'array length should be';
-
-    $field  = 'name';
-    $value  = 1;
-    $data   = [$value];
-    $args   = [$value];
-
     $this->expectException(WrongDefinedRuleException::class);
 
-    (new ArrLength($mockValidator, $field, null, [], ["non-numeric-value"]))
-      ->handle();
+    (new ArrLength(
+      $this->validatorMock,
+      $this->field,
+      $this->value = [],
+      $this->data,
+      $this->args = ["non-numeric-value"])
+    )->handle();
+  }
 
-    $mockValidator->expects($this->once())
-      ->method('addError')
-      ->with($field, $errorMessage);
+  public function testHandleIfArrayLengthIsNotLikeTheDefinedParamter(): void
+  {
+    $rule = new ArrLength(
+      $this->validatorMock,
+      $this->field,
+      $this->value = [],
+      $this->data,
+      $this->args = [3]
+    );
 
-    (new ArrLength($mockValidator, $field, $value, $data, $args))
-      ->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, sprintf($rule->getErrorMessage(), $this->args[0])]);
+    $rule->handle();
   }
 }

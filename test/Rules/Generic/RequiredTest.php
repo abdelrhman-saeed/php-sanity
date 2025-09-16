@@ -3,32 +3,15 @@
 namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Generic;
 
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\Required;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
-class RequiredTest extends TestCase
+class RequiredTest extends BaseRuleTestCase
 {
-
-  private MockObject|Validator $validatorMock;
-  private string $field = 'field';
-
-  protected function setUp(): void
-  {
-
-    $this->validatorMock = $this->createMock(Validator::class);
-  }
-
   public function testHandle(): void
   {
+    $rule = new Required($this->validatorMock, $this->field, $this->value, $this->data);
 
-    $this
-      ->validatorMock
-      ->expects($this->once())
-      ->method('addError')
-      ->with($this->field, 'required');
-
-    (new Required($this->validatorMock, $this->field, null, []))
-      ->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, $rule->getErrorMessage()]);
+    $rule->handle();
   }
 }

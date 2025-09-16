@@ -4,30 +4,33 @@ namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Date;
 
 use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Date\After;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
-use PHPUnit\Framework\TestCase;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
-class AfterTest extends TestCase
+class AfterTest extends BaseRuleTestCase
 {
-
-  public function testHandle(): void
+  public function testHandleIfRuleParamterIsNotDefined(): void
   {
     $this->expectException(WrongDefinedRuleException::class);
 
-    $mockValidator = $this->createMock(Validator::class);
-    $mockValidator
-      ->expects($this->once())
-      ->method('addError')
-      ->with($field = 'date', "date should be after: dateToCompareWith");
+    (new After($this->validatorMock, $this->field, $this->value, $this->data))
+      ->handle();
+  }
 
-    (new After(
-      $mockValidator,
-      $field,
-      "2025-10-02",
-      ["dateToCompareWith" => "2025-10-03"],
-      ["dateToCompareWith"]))->handle();
+  public function testHandleIfDateIsNotAfterTheComparableDate(): void 
+  {
+    $rule = new After(
+      $this->validatorMock,
+      $this->field,
+      $this->value = "2025-10-02",
+      $this->data = ["dateToCompareWith" => "2025-10-02"],
+      $this->args = ["dateToCompareWith"]
+    );
 
-    (new After($mockValidator, $field = 'date', [], []))->handle();
+    $this->expectsAddErrorToBeCalled([
+      $this->field, sprintf( $rule->getErrorMessage(), $this->args[0] )
+    ]);
+
+    $rule->handle();
   }
 }

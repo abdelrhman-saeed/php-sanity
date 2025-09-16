@@ -4,45 +4,33 @@ namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Rules\Generic;
 
 use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\Confirmed;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
-class ConfirmedTest extends TestCase
+
+class ConfirmedTest extends BaseRuleTestCase
 {
-
-  private MockObject|Validator $validatorMock;
-  private string $comparisionField;
-  private string $field = 'field';
-
-
-  protected function setUp(): void
-  {
-
-    $this->validatorMock = $this->createMock(Validator::class);
-    $this->comparisionField = 'anotherField';
-  } 
-
   public function testHandleIfConfirmationParamterIsNotDefined(): void
   {
-
     $this->expectException(WrongDefinedRuleException::class);
 
-    (new Confirmed($this->validatorMock, $this->field, null, []))
+    (new Confirmed($this->validatorMock, $this->field, $this->value, $this->data))
       ->handle();
   }
 
   public function testHandleIfComparisionValueDoesNotMatch(): void
   {
+    $rule = new Confirmed(
+      $this->validatorMock,
+      $this->field,
+      $this->value = "value",
+      $this->data = [$this->args[] = "comparisionField" => "non-equal-value"],
+      $this->args
+    );
 
-    $this
-      ->validatorMock
-      ->expects($this->once())
-      ->method('addError')
-      ->with($this->field, "fields '{$this->field}' and '{$this->comparisionField}' don't match!");
+    $this->expectsAddErrorToBeCalled([
+      $this->field, sprintf($rule->getErrorMessage(), $this->field, $this->args[0])
+    ]);
 
-    (new Confirmed($this->validatorMock, $this->field, "value",
-      [$this->comparisionField => "non-equal-val"], [$this->comparisionField]))
-    ->handle();
+    $rule->handle();
   }
 }

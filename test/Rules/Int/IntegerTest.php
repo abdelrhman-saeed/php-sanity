@@ -11,14 +11,9 @@ class IntegerTest extends BaseRuleTestCase
 
   public function testHandle(): void
   {
+    $rule = new Integer($this->validatorMock, $this->field, $this->value, $this->data);
 
-    $this
-      ->validatorMock
-      ->expects($this->once())
-      ->method('addError')
-      ->with($this->field, 'should be integer');
-
-    (new Integer($this->validatorMock, $this->field, null, $this->data))
-      ->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, $rule->getErrorMessage()]);
+    $rule->handle();
   }
 }

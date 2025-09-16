@@ -3,19 +3,18 @@
 namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Array;
 
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Array\ArrUnique;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
-use PHPUnit\Framework\TestCase;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
-class ArrUnqiueTest extends TestCase
+
+class ArrUnqiueTest extends BaseRuleTestCase
 {
 
   public function testHandle(): void
   {
-    ($mockValidator = $this->createMock(Validator::class))
-        ->expects($this->once())
-        ->method('addError')
-        ->with($field = 'name', 'array items should be unqiue');
+    $rule = new ArrUnique($this->validatorMock, $this->field, $this->value = [1,1], $this->data);
 
-    (new ArrUnique($mockValidator, $field, [1,2,3,3,4], []))->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, $rule->getErrorMessage()]);
+
+    $rule->handle();
   }
 }

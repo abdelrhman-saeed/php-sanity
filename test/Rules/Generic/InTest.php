@@ -4,41 +4,29 @@ namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Generic;
 
 use AbdelrhmanSaeed\PHP\Sanity\Exceptions\WrongDefinedRuleException;
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\In;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
 
-class InTest extends TestCase
+class InTest extends BaseRuleTestCase
 {
-
-  private MockObject|Validator $validatorMock;
-  private string $field = 'field';
-
-  protected function setUp(): void
-  {
-
-    $this->validatorMock = $this->createMock(Validator::class);
-  }
-
   public function testHandleIfSpecifiedValuesAreNotSet(): void
   {
-
     $this->expectException(WrongDefinedRuleException::class);
 
-    (new In($this->validatorMock, $this->field, null, []))
-      ->handle();
+    (new In($this->validatorMock, $this->field, null, []))->handle();
   }
 
   public function testHandleIfValueNotInSpecifiedValues(): void
   {
-    $this
-      ->validatorMock
-      ->expects($this->once())
-      ->method('addError')
-      ->with($this->field, "value must be one of the specified values!");
+    $rule = new In(
+      $this->validatorMock,
+      $this->field,
+      $this->value = 'value',
+      $this->data,
+      $this->args = ['value-1', 'value-2']
+    );
 
-    (new In($this->validatorMock, $this->field, 'value', [], ['val1', 'val2']))
-      ->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, $rule->getErrorMessage()]);
+    $rule->handle();
   }
 }

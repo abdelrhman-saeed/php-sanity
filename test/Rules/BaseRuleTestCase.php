@@ -22,12 +22,12 @@ class BaseRuleTestCase extends TestCase
     $this->validatorMock = $this->createMock(Validator::class);
   }
 
-  protected function expectsAddErrorToBeCalled(array $witth, int $exactly = 1): void
+  protected function expectsAddErrorToBeCalled(array $with, int $exactly = 1): void
   {
     $this
       ->validatorMock
       ->expects($this->exactly($exactly))
       ->method('addError')
-      ->with(...$witth);
+      ->with(...$with);
   }
 }

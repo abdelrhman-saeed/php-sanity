@@ -3,20 +3,17 @@
 namespace AbdelrhmanSaeed\PHP\Sanity\Test\Rules\Array;
 
 use AbdelrhmanSaeed\PHP\Sanity\Rules\Array\Arr;
-use AbdelrhmanSaeed\PHP\Sanity\Validator;
-use PHPUnit\Framework\TestCase;
+use AbdelrhmanSaeed\PHP\Sanity\Test\Rules\BaseRuleTestCase;
 
-class ArrTest extends TestCase
+
+class ArrTest extends BaseRuleTestCase
 {
 
   public function testHandle(): void
   {
-    $mockValidator = $this->createMock(Validator::class);
-    $mockValidator
-        ->expects($this->once())
-        ->method('addError')
-        ->with($field = 'name', 'should be an array');
+    $rule = new Arr($this->validatorMock, $this->field, $this->value, $this->data);
 
-    (new Arr($mockValidator, $field, null, []))->handle();
+    $this->expectsAddErrorToBeCalled([$this->field, sprintf($rule->getErrorMessage())]);
+    $rule->handle();
   }
 }
