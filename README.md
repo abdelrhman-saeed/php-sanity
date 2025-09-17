@@ -33,7 +33,7 @@ Create a validator by extending the base `Validator` class:
 ```php
 <?php
 
-use Abdelrhman\Saeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Validator;
 
 class UserValidator extends Validator
 {
@@ -159,7 +159,7 @@ For file upload validation, implement the `files()` method in your validator:
 ```php
 <?php
 
-use Abdelrhman\Saeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Validator;
 
 class FileUploadValidator extends Validator
 {
@@ -203,14 +203,14 @@ Create a custom rule by extending the `Rule` class:
 ```php
 <?php
 
-use Abdelrhman\Saeed\PHP\Sanity\Rules\Rule;
-use Abdelrhman\Saeed\PHP\Sanity\Rules\RuleFactory;
+use NightCommit\PHP\Sanity\Rules\Rule;
+use NightCommit\PHP\Sanity\Rules\RuleFactory;
 
 class UniqueUsernameRule extends Rule
 {
     /**
      * Available properties:
-     * @property \Abdelrhman\Saeed\PHP\Sanity\Validator $validator
+     * @property \NightCommit\PHP\Sanity\Validator $validator
      * @property string $field - The field being validated
      * @property mixed $value - The field value
      * @property array $data - All request data
@@ -249,7 +249,7 @@ Register a simple validation rule using a closure:
 ```php
 <?php
 
-use Abdelrhman\Saeed\PHP\Sanity\Rules\RuleFactory;
+use NightCommit\PHP\Sanity\Rules\RuleFactory;
 
 RuleFactory::register('strong_password', 
     function (string $errorMessage = "Password is not strong enough", bool $continueValidation = true, mixed $value): bool {
@@ -282,7 +282,7 @@ Define your own error messages in the sub validator $message static property
 ```php
 <?php
 
-use Abdelrhman\Saeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Validator;
 
 class UserValidator extends Validator
 {
@@ -340,7 +340,7 @@ if (! empty( $errors = $validator->getErrors() )) {
 ```php
 <?php
 
-use Abdelrhman\Saeed\PHP\Sanity\Validator;
+use NightCommit\PHP\Sanity\Validator;
 
 class UserRegistrationValidator extends Validator
 {

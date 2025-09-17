@@ -14,6 +14,7 @@ use NightCommit\PHP\Sanity\Rules\{
   Generic\Required,
   Generic\Confirmed,
   Generic\In,
+  Generic\Nullable,
 
   #Integer
   Int\Integer,
@@ -53,7 +54,6 @@ use NightCommit\PHP\Sanity\Rules\{
   File\FSize,
   File\FType,
 };
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Generic\Nullable;
 
 class RuleFactory
 {
