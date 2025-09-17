@@ -101,7 +101,7 @@ $validator->all();
 
 | Rule | Description | Example |
 |------|-------------|---------|
-| `str` | Validates that the value is a string | `'name' => ['string']` |
+| `string` | Validates that the value is a string | `'name' => ['string']` |
 | `size:length` | Validates exact string length | `'code' => ['string', 'size:6']` |
 | `min:limit` | Sets minimum string length | `'name' => ['string', 'min:2']` |
 | `max:limit` | Sets maximum string length | `'name' => ['string', 'max:50']` |
