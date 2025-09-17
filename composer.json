@@ -1,5 +1,5 @@
 {
-  "name": "abdelrhman-saeed/php-sanity",
+  "name": "night-commit/php-sanity",
   "description": "php package to validate incoming request data",
   "type": "library",
   "license": "MIT",
@@ -18,5 +18,8 @@
   "require-dev": {
     "phpunit/phpunit": "^12.3",
     "mockery/mockery": "^1.6"
+  },
+  "require": {
+    "abdelrhman-saeed/php-http": "^2.1"
   }
 }

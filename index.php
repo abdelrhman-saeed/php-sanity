@@ -4,9 +4,9 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use AbdelrhmanSaeed\PHP\Http\{Request, Response};
-use AbdelrhmanSaeed\PHP\Sanity\Dev\UserValidator;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\Rule;
-use AbdelrhmanSaeed\PHP\Sanity\Rules\RuleFactory;
+use NightCommit\PHP\Sanity\Dev\UserValidator;
+use NightCommit\PHP\Sanity\Rules\Rule;
+use NightCommit\PHP\Sanity\Rules\RuleFactory;
 
 $request = new Request;
 

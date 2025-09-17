@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d407907726a7c125d9e7c34167f6431",
-    "packages": [],
+    "content-hash": "c334b844ef9a2c9a13202473dba73005",
+    "packages": [
+        {
+            "name": "abdelrhman-saeed/php-http",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/abdelrhman-saeed/php-http.git",
+                "reference": "d74bca5283481f8980d65113709a086541534d17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/abdelrhman-saeed/php-http/zipball/d74bca5283481f8980d65113709a086541534d17",
+                "reference": "d74bca5283481f8980d65113709a086541534d17",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AbdelrhmanSaeed\\PHP\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "abdelrhman-saeed",
+                    "email": "abdelrhmansaeed001@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/abdelrhman-saeed/php-http/issues",
+                "source": "https://github.com/abdelrhman-saeed/php-http/tree/v2.1.1"
+            },
+            "time": "2025-09-05T13:01:26+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "hamcrest/hamcrest-php",
