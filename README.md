@@ -21,7 +21,7 @@ A powerful and flexible PHP validation package that allows you to validate data 
 Install via Composer:
 
 ```bash
-composer require abdelrhman-saeed/php-sanity
+composer require night-commit/php-sanity
 ```
 
 ## Quick Start
@@ -45,18 +45,18 @@ class UserValidator extends Validator
     protected static function rules(): array
     {
         return [
-            'name'      => ['required', 'str', 'min:2', 'max:50'],
+            'name'      => ['nullable', 'string', 'min:2', 'max:50'],
             'email'     => ['required', 'email'],
             'age'       => ['required', 'int', 'more:0', 'less:120'],
-            'password'  => ['required', 'str', 'min:8'],
+            'password'  => ['required', 'string', 'min:8'],
             'password_confirmation' => ['required', 'confirmed:password'],
 
             'personal'         => ['required', 'array'],
-            'personal.address' => ['required', 'str', 'max: 100'],
+            'personal.address' => ['required', 'string', 'max:100'],
 
             'posts'             => ['nullable', 'array'],
-            'posts.*.title'     => ['required', 'str', 'min:3'],
-            'posts.*.content'   => ['required', 'str', 'min:3', 'max:200'],
+            'posts.*.title'     => ['required', 'string', 'min:3'],
+            'posts.*.content'   => ['required', 'string', 'min:3', 'max:200'],
         ];
     }
 }
@@ -101,10 +101,10 @@ $validator->all();
 
 | Rule | Description | Example |
 |------|-------------|---------|
-| `str` | Validates that the value is a string | `'name' => ['str']` |
-| `size:length` | Validates exact string length | `'code' => ['str', 'size:6']` |
-| `min:limit` | Sets minimum string length | `'name' => ['str', 'min:2']` |
-| `max:limit` | Sets maximum string length | `'name' => ['str', 'max:50']` |
+| `str` | Validates that the value is a string | `'name' => ['string']` |
+| `size:length` | Validates exact string length | `'code' => ['string', 'size:6']` |
+| `min:limit` | Sets minimum string length | `'name' => ['string', 'min:2']` |
+| `max:limit` | Sets maximum string length | `'name' => ['string', 'max:50']` |
 | `json` | Validates JSON format | `'config' => ['json']` |
 | `email` | Validates email format | `'email' => ['email']` |
 | `regex:pattern` | Validates against regex pattern | `'phone' => ['regex:/^\d{10}$/']` |
@@ -147,7 +147,7 @@ $validator->all();
 | Rule | Description | Example |
 |------|-------------|---------|
 | `required` | Field must be present and not empty | `'name' => ['required']` |
-| `nullable` | Field can be missing or null | `'middle_name' => ['nullable', 'str']` |
+| `nullable` | Field can be missing or null | `'middle_name' => ['nullable', 'string']` |
 | `filled` | Field must not be empty if present | `'bio' => ['filled']` |
 | `in:value1,value2` | Value must be in specified list | `'status' => ['in:active,inactive,pending']` |
 | `confirmed:field` | Value must match another field | `'password_confirmation' => ['confirmed:password']` |
@@ -268,8 +268,8 @@ class UserValidator extends Validator
     protected static function rules(): array
     {
         return [
-            'username' => ['required', 'str', 'unique_username'],
-            'password' => ['required', 'str', 'min:8', 'strong_password']
+            'username' => ['required', 'string', 'unique_username'],
+            'password' => ['required', 'string', 'min:8', 'strong_password']
         ];
     }
 }
@@ -297,13 +297,13 @@ class UserValidator extends Validator
         'min'      => 'This field is too short',
         'max'      => 'This field is too long',
         'int'      => 'Please enter a valid number',
-        'str'      => 'This field must be text only'
+        'string'      => 'This field must be text only'
     ];
     
     protected static function rules(): array
     {
         return [
-            'name'  => ['required', 'str', 'min:2'],
+            'name'  => ['required', 'string', 'min:2'],
             'email' => ['required', 'email'],
             'age'   => ['required', 'int']
         ];
@@ -347,15 +347,15 @@ class UserRegistrationValidator extends Validator
     protected static function rules(): array
     {
         return [
-            'first_name'            => ['required', 'str', 'min:2', 'max:30'],
-            'last_name'             => ['required', 'str', 'min:2', 'max:30'],
+            'first_name'            => ['required', 'string', 'min:2', 'max:30'],
+            'last_name'             => ['required', 'string', 'min:2', 'max:30'],
             'email'                 => ['required', 'email', 'max:255'],
 
-            'password'              => ['required', 'str', 'min:8', 'strong_password'],
+            'password'              => ['required', 'string', 'min:8', 'strong_password'],
             'password_confirmation' => ['required', 'confirmed:password'],
 
             'age'                   => ['required', 'int', 'more:12', 'less:120'],
-            'phone'                 => ['nullable', 'str', 'regex:/^\+?[\d\s-()]+$/'],
+            'phone'                 => ['nullable', 'string', 'regex:/^\+?[\d\s-()]+$/'],
 
             'terms_accepted'        => ['required', 'boolean:cast'],
 
