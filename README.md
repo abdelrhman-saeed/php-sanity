@@ -42,7 +42,7 @@ class UserValidator extends Validator
      *
      * @return array<string, string[]>
      */
-    protected static function rules(): array
+    protected function rules(): array
     {
         return [
             'name'      => ['nullable', 'string', 'min:2', 'max:50'],
@@ -84,7 +84,7 @@ $data = [
 // Perform validation
 $validator = new UserValidator($data);
 
-if (! empty($validator->getErrors())) {
+if (! empty($validator->errors())) {
     // Handle validation errors
 }
 
@@ -168,7 +168,7 @@ class FileUploadValidator extends Validator
      *
      * @return array<string, string[]>
      */
-    protected static function files(): array
+    protected function files(): array
     {
         return [
             'avatar'    => ['file', 'ftype:jpg,jpeg,png', 'fsize:0,2,mb'],
@@ -265,7 +265,7 @@ RuleFactory::register('strong_password',
 ```php
 class UserValidator extends Validator
 {
-    protected static function rules(): array
+    protected function rules(): array
     {
         return [
             'username' => ['required', 'string', 'unique_username'],
@@ -300,7 +300,7 @@ class UserValidator extends Validator
         'string'      => 'This field must be text only'
     ];
     
-    protected static function rules(): array
+    protected function rules(): array
     {
         return [
             'name'  => ['required', 'string', 'min:2'],
@@ -344,7 +344,7 @@ use NightCommit\PHP\Sanity\Validator;
 
 class UserRegistrationValidator extends Validator
 {
-    protected static function rules(): array
+    protected function rules(): array
     {
         return [
             'first_name'            => ['required', 'string', 'min:2', 'max:30'],
@@ -364,7 +364,7 @@ class UserRegistrationValidator extends Validator
         ];
     }
     
-    protected static function files(): array
+    protected function files(): array
     {
         return [
             'profile_picture' => ['nullable', 'file', 'ftype:jpg,jpeg,png', 'fsize:0,2,mb']

@@ -22,7 +22,7 @@ abstract class Validator
     $this->validate($this->files());
   }
 
-  public function validate(array $rules, ?callable $action = null): void
+  private function validate(array $rules, ?callable $action = null): void
   {
     foreach ($rules as $path => &$userDefinedRules)
     {
