@@ -316,7 +316,7 @@ class UserValidator extends Validator
 ```php
 $validator = new UserValidator($data);
 
-if (! empty( $errors = $validator->getErrors() )) {
+if (! empty( $errors = $validator->errors() )) {
     
     // $errors structure:
     // [
