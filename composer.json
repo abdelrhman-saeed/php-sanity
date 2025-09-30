@@ -2,6 +2,16 @@
   "name": "night-commit/php-sanity",
   "description": "php package to validate incoming request data",
   "type": "library",
+  "keywords": [
+    "php",
+    "validation",
+    "validator",
+    "rules",
+    "data",
+    "fields",
+    "dot-notation",
+    "wildcards"
+  ],
   "license": "MIT",
   "autoload": {
     "psr-4": {
